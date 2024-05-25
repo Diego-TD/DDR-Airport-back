@@ -12,12 +12,7 @@ COPY settings.gradle .
 # Copy the project source code
 COPY src ./src
 
-# Run the Gradle build
-RUN chmod +x gradlew && ./gradlew clean build
-RUN ls -l build/libs
-# Copy the JAR file
 COPY build/libs/DDR-Airport-back-0.0.1-SNAPSHOT.jar app.jar
-
 
 EXPOSE 8080
 
