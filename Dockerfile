@@ -1,7 +1,6 @@
 FROM openjdk:17-jdk-slim
-LABEL authors="DTD20"
+LABEL authors="Diego-TD"
 
-# Set the working directory in the container
 WORKDIR /app
 
 # Copy the Gradle wrapper files and build script
@@ -11,11 +10,14 @@ COPY gradle ./gradle
 # Copy the build configuration
 COPY build.gradle .
 
-# Download and cache Gradle dependencies
-RUN ./gradlew --no-daemon dependencies
-
 # Copy the project source code
 COPY . .
+
+# Grant execute permissions to the Gradle wrapper script
+RUN chmod +x gradlew
+
+# Download and cache Gradle dependencies
+RUN ./gradlew --no-daemon dependencies
 
 # Build the project
 RUN ./gradlew --no-daemon build
