@@ -1,8 +1,6 @@
 package com.ddr.back.controller;
 
-import com.ddr.back.entity.City;
 import com.ddr.back.entity.Country;
-import com.ddr.back.repository.CityRepository;
 import com.ddr.back.repository.CountryRepository;
 import jakarta.annotation.Nonnull;
 import org.springframework.http.HttpStatus;
