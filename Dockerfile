@@ -9,7 +9,7 @@ COPY settings.gradle .
 
 COPY src ./src
 
-RUN ./gradlew clean build
+RUN chmod +x gradlew && ./gradlew clean build
 
 FROM openjdk:17-jdk-slim
 
