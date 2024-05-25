@@ -20,12 +20,12 @@ public class AirportController {
         this.repository = repository;
     }
 
-    @GetMapping("/airports")
+    @GetMapping("/airport")
     public List<Airport> getAirports() {
         return repository.findAll();
     }
 
-    @GetMapping("/airports/{id}")
+    @GetMapping("/airport/{id}")
     public Optional<Airport> getAirport(@PathVariable Long id) {
         if (repository.existsById(id)){
             return repository.findById(id);
@@ -33,7 +33,7 @@ public class AirportController {
         return null;
     }
 
-    @PostMapping("/airports")
+    @PostMapping("/airport")
     public ResponseEntity<?> createAirport(@Nonnull @RequestBody Airport airport) {
         if (airport.getName() == null || airport.getName().trim().isEmpty()) {
             return ResponseEntity.badRequest().body("Airport name cannot be empty");
@@ -48,7 +48,7 @@ public class AirportController {
         }
     }
 
-    @PutMapping("/airports")
+    @PutMapping("/airport")
     public ResponseEntity<?> updateAirport(@RequestBody Airport airport){
         if (airport.getId() == null){
             return ResponseEntity.badRequest().body("Airport ID cannot be null");
@@ -62,7 +62,7 @@ public class AirportController {
         }
     }
 
-    @DeleteMapping("/airports/{id}")
+    @DeleteMapping("/airport/{id}")
     public ResponseEntity<?> deleteAirport(@PathVariable Long id){
         if (id == null) {
             return ResponseEntity.badRequest().body("Airport ID cannot be null");

@@ -1,13 +1,10 @@
 package com.ddr.back.controller;
 
-import com.ddr.back.entity.Airport;
 import com.ddr.back.entity.City;
-import com.ddr.back.repository.AirportRepository;
 import com.ddr.back.repository.CityRepository;
 import jakarta.annotation.Nonnull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

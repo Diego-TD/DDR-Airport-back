@@ -1,0 +1,47 @@
+# Ignore Gradle project-specific files
+.gradle
+
+# Include the build/libs directory for the JAR file
+# Exclude everything in build directory except build/libs/
+build/*
+!build/libs/
+
+# Allow Gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar
+
+# Ignore IDE-specific files
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+# Allow only specific directories in src/main and src/test
+!**/src/main/**/build/
+!**/src/test/**/build/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Ignore NetBeans-specific files
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Ignore VS Code-specific files
+.vscode/
+
+# Ignore other common files
+HELP.md
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+# Allow only specific directories in src/main and src/test
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+.DS_Store
