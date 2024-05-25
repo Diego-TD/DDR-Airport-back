@@ -16,7 +16,6 @@ import java.util.Optional;
 public class AirportController {
     private final AirportRepository repository;
 
-
     public AirportController(AirportRepository repository) {
         this.repository = repository;
     }

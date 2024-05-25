@@ -3,7 +3,8 @@ package com.ddr.back.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Airport {
+public class Country {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -11,21 +12,21 @@ public class Airport {
     @Column(nullable = false)
     private String name;
 
-    public Airport() {
-        
+    public Country(){
+
     }
 
-    public Airport(Long id, String name) {
+    public Country(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
