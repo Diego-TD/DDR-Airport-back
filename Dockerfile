@@ -1,18 +1,21 @@
-FROM openjdk:17-jdk-slim
-LABEL authors="Diego-TD"
+FROM gradle:7.3.3-jdk17 as build
 
-WORKDIR /DDR-Airport-back
+WORKDIR /app
 
-# Copy the Gradle wrapper files and build script
 COPY gradlew .
 COPY gradle ./gradle
 COPY build.gradle .
 COPY settings.gradle .
 
-# Copy the project source code
 COPY src ./src
 
-COPY build/libs/DDR-Airport-back-0.0.1-SNAPSHOT.jar app.jar
+RUN ./gradlew clean build
+
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY --from=build /app/build/libs/DDR-Airport-back-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
