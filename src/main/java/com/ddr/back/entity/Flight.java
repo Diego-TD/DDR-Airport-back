@@ -1,6 +1,5 @@
 package com.ddr.back.entity;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
 import java.sql.Date;

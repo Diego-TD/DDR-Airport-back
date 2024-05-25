@@ -1,10 +1,6 @@
 package com.ddr.back.entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import org.hibernate.type.descriptor.jdbc.TimestampWithTimeZoneJdbcType;
-
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 
