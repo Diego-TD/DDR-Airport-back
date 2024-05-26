@@ -36,7 +36,7 @@ public class AirportCityCountryController {
 
 
     @GetMapping("/airportCityCountry")
-    public ResponseEntity<List<AirportCityCountry>> getAll() {
+    public ResponseEntity<List<AirportCityCountry>> getAllAirplaneCityCountry() {
         try {
             List<AirportCityCountry> list = airportCityCountryRepository.findAll();
             return new ResponseEntity<>(list, HttpStatus.OK);
@@ -45,7 +45,7 @@ public class AirportCityCountryController {
         }
     }
     @GetMapping("/airportCityCountry/{id}")
-    public ResponseEntity<Optional<AirportCityCountry>> getById(@PathVariable Long id) {
+    public ResponseEntity<Optional<AirportCityCountry>> getAirplaneCityCountryById(@PathVariable Long id) {
         try {
             if (!airportCityCountryRepository.existsById(id)) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
