@@ -1,7 +1,8 @@
 package com.ddr.back.entity;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
+import org.springframework.data.annotation.CreatedDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -15,8 +16,9 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
+    @CreatedDate
     @Column(nullable = false)
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
     private String firstName;
     private String lastName;
     private Character sex;
@@ -33,7 +35,7 @@ public class User {
 
     }
 
-    public User(Long id, String username, String password, Timestamp createdAt, String firstName, String lastName, Character sex, Integer age, String phoneNumber, String email, List<String> roles, Country nationality) {
+    public User(Long id, String username, String password, LocalDateTime createdAt, String firstName, String lastName, Character sex, Integer age, String phoneNumber, String email, List<String> roles, Country nationality) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -72,11 +74,11 @@ public class User {
         this.password = password;
     }
 
-    public Timestamp getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
