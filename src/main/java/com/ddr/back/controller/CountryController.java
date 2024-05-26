@@ -1,5 +1,6 @@
 package com.ddr.back.controller;
 
+import com.ddr.back.entity.Airport;
 import com.ddr.back.entity.Country;
 import com.ddr.back.repository.CountryRepository;
 import jakarta.annotation.Nonnull;
@@ -59,6 +60,32 @@ public class CountryController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to updated country");
         }
     }
+
+    @PutMapping("/country/{id}")
+    public ResponseEntity<?> updateAirport(@RequestBody Country newCountry, @PathVariable Long id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.badRequest().body("Country ID cannot be null");
+            }
+
+            if (newCountry == null) {
+                return ResponseEntity.badRequest().body("Country object cannot be null");
+            }
+
+            Optional<Country> existingEntityOpt = repository.findById(id);
+            if (existingEntityOpt.isPresent()) {
+                Country existingEntity = existingEntityOpt.get();
+                existingEntity.setName(newCountry.getName());
+                repository.save(existingEntity);
+                return ResponseEntity.status(HttpStatus.OK).body("Country updated successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Country not found");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update country");
+        }
+    }
+
 
     @DeleteMapping("/country/{id}")
     public ResponseEntity<?> deleteCountry(@PathVariable Long id){

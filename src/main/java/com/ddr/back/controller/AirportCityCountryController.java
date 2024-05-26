@@ -110,7 +110,7 @@ public class AirportCityCountryController {
     }
 
     @PutMapping("/airportCityCountry/{id}")
-    public ResponseEntity<?> updateAirportCityCountry(@PathVariable Long id, @RequestBody AirportCityCountryDTO dto) {
+    public ResponseEntity<?> updateAirportCityCountry(@RequestBody AirportCityCountryDTO dto, @PathVariable Long id) {
         try {
             Optional<AirportCityCountry> existingEntityOpt = airportCityCountryRepository.findById(id);
             if (existingEntityOpt.isEmpty()) {

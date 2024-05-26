@@ -1,5 +1,6 @@
 package com.ddr.back.controller;
 
+import com.ddr.back.entity.Airport;
 import com.ddr.back.entity.City;
 import com.ddr.back.repository.CityRepository;
 import jakarta.annotation.Nonnull;
@@ -56,9 +57,35 @@ public class CityController {
             repository.save(city);
             return ResponseEntity.status(HttpStatus.OK).body("City updated successfully");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to updated city");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update city");
         }
     }
+
+    @PutMapping("/city/{id}")
+    public ResponseEntity<?> updateCity(@RequestBody City newCity, @PathVariable Long id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.badRequest().body("City ID cannot be null");
+            }
+
+            if (newCity == null) {
+                return ResponseEntity.badRequest().body("City object cannot be null");
+            }
+
+            Optional<City> existingEntityOpt = repository.findById(id);
+            if (existingEntityOpt.isPresent()) {
+                City existingEntity = existingEntityOpt.get();
+                existingEntity.setName(newCity.getName());
+                repository.save(existingEntity);
+                return ResponseEntity.status(HttpStatus.OK).body("City updated successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("City not found");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update city");
+        }
+    }
+
 
     @DeleteMapping("/city/{id}")
     public ResponseEntity<?> deleteCity(@PathVariable Long id){

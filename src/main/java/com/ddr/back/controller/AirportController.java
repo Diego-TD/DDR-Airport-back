@@ -1,6 +1,8 @@
 package com.ddr.back.controller;
 
 import com.ddr.back.entity.Airport;
+import com.ddr.back.entity.AirportCityCountry;
+import com.ddr.back.entity.City;
 import com.ddr.back.repository.AirportRepository;
 import jakarta.annotation.Nonnull;
 import org.springframework.http.HttpStatus;
@@ -48,17 +50,28 @@ public class AirportController {
         }
     }
 
-    @PutMapping("/airport")
-    public ResponseEntity<?> updateAirport(@RequestBody Airport airport){
-        if (airport.getId() == null){
-            return ResponseEntity.badRequest().body("Airport ID cannot be null");
-        }
-
+    @PutMapping("/airport/{id}")
+    public ResponseEntity<?> updateAirport(@RequestBody Airport newAirport, @PathVariable Long id) {
         try {
-            repository.save(airport);
-            return ResponseEntity.status(HttpStatus.OK).body("Airport updated successfully");
+            if (id == null) {
+                return ResponseEntity.badRequest().body("Airport ID cannot be null");
+            }
+
+            if (newAirport == null) {
+                return ResponseEntity.badRequest().body("Airport object cannot be null");
+            }
+
+            Optional<Airport> existingEntityOpt = repository.findById(id);
+            if (existingEntityOpt.isPresent()) {
+                Airport existingEntity = existingEntityOpt.get();
+                existingEntity.setName(newAirport.getName());
+                repository.save(existingEntity);
+                return ResponseEntity.status(HttpStatus.OK).body("Airport updated successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Airport not found");
+            }
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to updated airport");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update airport");
         }
     }
 
