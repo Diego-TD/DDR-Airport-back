@@ -24,7 +24,6 @@ public class FlightController {
         this.airportRepository = airportRepository;
     }
 
-    //TODO: consistency with endpoint naming e.g(when getting all: /flights | when getting one: /flight/id)
     @GetMapping("/flights")
     public ResponseEntity<List<Flight>> getFlights() {
         try {

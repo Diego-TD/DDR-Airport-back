@@ -1,6 +1,5 @@
 package com.ddr.back.controller;
 
-import com.ddr.back.entity.Airport;
 import com.ddr.back.entity.Country;
 import com.ddr.back.repository.CountryRepository;
 import jakarta.annotation.Nonnull;
@@ -19,7 +18,7 @@ public class CountryController {
         this.repository = repository;
     }
 
-    @GetMapping("/country")
+    @GetMapping("/countries")
     public List<Country> getCountries() {
         return repository.findAll();
     }
@@ -44,20 +43,6 @@ public class CountryController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Country created successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create country");
-        }
-    }
-
-    @PutMapping("/country")
-    public ResponseEntity<?> updateCountry(@RequestBody Country country){
-        if (country.getId() == null){
-            return ResponseEntity.badRequest().body("Country ID cannot be null");
-        }
-
-        try {
-            repository.save(country);
-            return ResponseEntity.status(HttpStatus.OK).body("Country updated successfully");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to updated country");
         }
     }
 

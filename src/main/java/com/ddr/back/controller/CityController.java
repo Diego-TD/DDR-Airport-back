@@ -1,6 +1,5 @@
 package com.ddr.back.controller;
 
-import com.ddr.back.entity.Airport;
 import com.ddr.back.entity.City;
 import com.ddr.back.repository.CityRepository;
 import jakarta.annotation.Nonnull;
@@ -19,7 +18,7 @@ public class CityController {
         this.repository = repository;
     }
 
-    @GetMapping("/city")
+    @GetMapping("/cities")
     public List<City> getCities() {
         return repository.findAll();
     }
@@ -47,20 +46,6 @@ public class CityController {
         }
     }
 
-    @PutMapping("/city")
-    public ResponseEntity<?> updateCity(@RequestBody City city){
-        if (city.getId() == null){
-            return ResponseEntity.badRequest().body("City ID cannot be null");
-        }
-
-        try {
-            repository.save(city);
-            return ResponseEntity.status(HttpStatus.OK).body("City updated successfully");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update city");
-        }
-    }
-
     @PutMapping("/city/{id}")
     public ResponseEntity<?> updateCity(@RequestBody City newCity, @PathVariable Long id) {
         try {
@@ -85,7 +70,6 @@ public class CityController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update city");
         }
     }
-
 
     @DeleteMapping("/city/{id}")
     public ResponseEntity<?> deleteCity(@PathVariable Long id){

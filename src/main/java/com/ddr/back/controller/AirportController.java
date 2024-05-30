@@ -22,7 +22,7 @@ public class AirportController {
         this.repository = repository;
     }
 
-    @GetMapping("/airport")
+    @GetMapping("/airports")
     public List<Airport> getAirports() {
         return repository.findAll();
     }

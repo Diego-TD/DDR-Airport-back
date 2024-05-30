@@ -20,7 +20,7 @@ public class AirplaneController {
         this.airplaneRepository = airplaneRepository;
     }
 
-    @GetMapping("/airplane")
+    @GetMapping("/airplanes")
     public ResponseEntity<List<Airplane>> getAllAirplanes() {
         try {
             List<Airplane> list = airplaneRepository.findAll();
