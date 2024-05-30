@@ -1,9 +1,11 @@
 package com.ddr.back.entity;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
+import org.springframework.data.annotation.CreatedDate;
+import java.time.LocalDateTime;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +19,9 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(nullable = false)
     private User user;
+    @CreatedDate
     @Column(nullable = false)
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
     @Column(nullable = false)
     private Integer luggage;
 
@@ -26,7 +29,7 @@ public class Reservation {
 
     }
 
-    public Reservation(Long id, Flight flight, User user, Timestamp createdAt, Integer luggage) {
+    public Reservation(Long id, Flight flight, User user, LocalDateTime createdAt, Integer luggage) {
         this.id = id;
         this.flight = flight;
         this.user = user;
@@ -58,11 +61,11 @@ public class Reservation {
         this.user = user;
     }
 
-    public Timestamp getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
