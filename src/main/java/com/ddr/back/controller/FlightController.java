@@ -66,6 +66,7 @@ public class FlightController {
             flight.setArrivalAirport(arrivalAirportOpt.get());
             flight.setDate(dto.getDate());
             flight.setTime(dto.getTime());
+            flight.setPrice(generateFlightPrice(flight));
 
             flightRepository.save(flight);
             return ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
@@ -123,5 +124,17 @@ public class FlightController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete");
         }
+    }
+
+    public Double generateFlightPrice(Flight flight){
+        Double price;
+        Airport departureAirport = flight.getDepartureAirport();
+        Airport arrivalAirport = flight.getArrivalAirport();
+
+        //calculate price in base of distance
+
+        price = 1500.0;
+
+        return price;
     }
 }

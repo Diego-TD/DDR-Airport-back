@@ -26,17 +26,21 @@ public class Flight {
     @Column(nullable = false)
     private Time time;
 
+    //@Column(nullable = false)
+    private Double price;
+
     public Flight() {
 
     }
 
-    public Flight(Long id, Airplane airplane, Airport departureAirport, Airport arrivalAirport, Date date, Time time) {
+    public Flight(Long id, Airplane airplane, Airport departureAirport, Airport arrivalAirport, Date date, Time time, Double price) {
         this.id = id;
         this.airplane = airplane;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.date = date;
         this.time = time;
+        this.price = price;
     }
 
     public Long getId() {
@@ -85,5 +89,13 @@ public class Flight {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

@@ -44,12 +44,18 @@ public class ReservationRoundTripController {
             reservation.setUser(userOpt.get());
             reservation.setLuggage(dto.getLuggage());
             reservation.setCreatedAt(LocalDateTime.now());
+            reservation.setTotal(calcReservationRoundTripTotal(flightOpt.get(), returnFlightOpt.get()));
+
 
             reservationRoundTripRepository.save(reservation);
             return ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create");
         }
+    }
+
+    private Double calcReservationRoundTripTotal(Flight departureFlight, Flight returnFlight) {
+        return departureFlight.getPrice() + returnFlight.getPrice(); // + fees? nah
     }
 
     @PutMapping("/reservationRoundTrip/{id}")
@@ -74,6 +80,7 @@ public class ReservationRoundTripController {
             existingEntity.setReturnFlight(returnFlightOpt.get());
             existingEntity.setUser(userOpt.get());
             existingEntity.setLuggage(dto.getLuggage());
+            existingEntity.setTotal(existingEntity.getTotal()); //TODO: not a real put method
 
             reservationRoundTripRepository.save(existingEntity);
             return ResponseEntity.status(HttpStatus.OK).body("Updated successfully");
