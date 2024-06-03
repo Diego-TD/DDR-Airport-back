@@ -26,7 +26,7 @@ public class Flight {
     @Column(nullable = false)
     private Time time;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private Double price;
 
     public Flight() {
