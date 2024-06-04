@@ -7,21 +7,16 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class FlightDTO {
-    @Nullable
     private Long airplaneId;
-    @Nonnull
     private Long departureAirportId;
-    @Nonnull
     private Long arrivalAirportId;
-    @Nonnull
     private Date date;
-    @Nullable
     private Time time;
 
     public FlightDTO() {
     }
 
-    public FlightDTO(@Nullable Long airplaneId, @Nonnull Long departureAirportId, @Nonnull Long arrivalAirportId, @Nonnull Date date, @Nullable Time time) {
+    public FlightDTO(Long airplaneId, Long departureAirportId, Long arrivalAirportId, Date date, Time time) {
         this.airplaneId = airplaneId;
         this.departureAirportId = departureAirportId;
         this.arrivalAirportId = arrivalAirportId;
@@ -29,48 +24,43 @@ public class FlightDTO {
         this.time = time;
     }
 
-    @Nullable
     public Long getAirplaneId() {
         return airplaneId;
     }
 
-    public void setAirplaneId(@Nullable Long airplaneId) {
+    public void setAirplaneId(Long airplaneId) {
         this.airplaneId = airplaneId;
     }
 
-    @Nonnull
     public Long getDepartureAirportId() {
         return departureAirportId;
     }
 
-    public void setDepartureAirportId(@Nonnull Long departureAirportId) {
+    public void setDepartureAirportId(Long departureAirportId) {
         this.departureAirportId = departureAirportId;
     }
 
-    @Nonnull
     public Long getArrivalAirportId() {
         return arrivalAirportId;
     }
 
-    public void setArrivalAirportId(@Nonnull Long arrivalAirportId) {
+    public void setArrivalAirportId(Long arrivalAirportId) {
         this.arrivalAirportId = arrivalAirportId;
     }
 
-    @Nonnull
     public Date getDate() {
         return date;
     }
 
-    public void setDate(@Nonnull Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    @Nullable
     public Time getTime() {
         return time;
     }
 
-    public void setTime(@Nullable Time time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 }
