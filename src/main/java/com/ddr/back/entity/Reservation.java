@@ -24,7 +24,7 @@ public class Reservation {
     private LocalDateTime createdAt;
     @Column(nullable = false)
     private Integer luggage;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private Double total;
 
     public Reservation(){
