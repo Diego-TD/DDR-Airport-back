@@ -1,12 +1,13 @@
 package com.ddr.back.dto;
 
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.sql.Date;
 import java.sql.Time;
 
 public class FlightDTO {
-    @Nonnull
+    @Nullable
     private Long airplaneId;
     @Nonnull
     private Long departureAirportId;
@@ -14,10 +15,13 @@ public class FlightDTO {
     private Long arrivalAirportId;
     @Nonnull
     private Date date;
-    @Nonnull
+    @Nullable
     private Time time;
 
-    public FlightDTO(@Nonnull Date date, @Nonnull Time time, @Nonnull Long airplaneId, @Nonnull Long departureAirportId, @Nonnull Long arrivalAirportId) {
+    public FlightDTO() {
+    }
+
+    public FlightDTO(@Nullable Long airplaneId, @Nonnull Long departureAirportId, @Nonnull Long arrivalAirportId, @Nonnull Date date, @Nullable Time time) {
         this.airplaneId = airplaneId;
         this.departureAirportId = departureAirportId;
         this.arrivalAirportId = arrivalAirportId;
@@ -25,12 +29,12 @@ public class FlightDTO {
         this.time = time;
     }
 
-    @Nonnull
+    @Nullable
     public Long getAirplaneId() {
         return airplaneId;
     }
 
-    public void setAirplaneId(@Nonnull Long airplaneId) {
+    public void setAirplaneId(@Nullable Long airplaneId) {
         this.airplaneId = airplaneId;
     }
 
@@ -61,12 +65,12 @@ public class FlightDTO {
         this.date = date;
     }
 
-    @Nonnull
+    @Nullable
     public Time getTime() {
         return time;
     }
 
-    public void setTime(@Nonnull Time time) {
+    public void setTime(@Nullable Time time) {
         this.time = time;
     }
 }
