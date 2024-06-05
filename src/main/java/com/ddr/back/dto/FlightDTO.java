@@ -1,11 +1,7 @@
 package com.ddr.back.dto;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
-import java.sql.Date;
 import java.sql.Time;
-
+import java.sql.Date;
 public class FlightDTO {
     private Long airplaneId;
     private Long departureAirportId;

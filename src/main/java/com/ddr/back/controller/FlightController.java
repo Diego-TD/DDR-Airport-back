@@ -37,7 +37,10 @@ public class FlightController {
     @PostMapping("/flights")
     public ResponseEntity<List<Flight>> getFlightsFiltered(@RequestBody FlightDTO flightDTO) {
         try {
-            List<Flight> list = flightRepository.findOneWayFiltered(flightDTO.getDepartureAirportId(),flightDTO.getArrivalAirportId(), flightDTO.getDate().toString());
+            List<Flight> list = flightRepository.findOneWayFiltered(
+                    flightDTO.getDepartureAirportId(),
+                    flightDTO.getArrivalAirportId(),
+                    flightDTO.getDate());
             return new ResponseEntity<>(list, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
