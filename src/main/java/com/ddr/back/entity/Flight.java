@@ -24,7 +24,9 @@ public class Flight {
     @Column(nullable = false)
     private Date date;
     @Column(nullable = false)
-    private Time time;
+    private Time departureTime;
+    @Column(nullable = false)
+    private Time arrivalTime;
 
     //@Column(nullable = false)
     private Double price;
@@ -33,13 +35,14 @@ public class Flight {
 
     }
 
-    public Flight(Long id, Airplane airplane, Airport departureAirport, Airport arrivalAirport, Date date, Time time, Double price) {
+    public Flight(Long id, Airplane airplane, Airport departureAirport, Airport arrivalAirport, Date date, Time departureTime, Time arrivalTime, Double price) {
         this.id = id;
         this.airplane = airplane;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.date = date;
-        this.time = time;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
         this.price = price;
     }
 
@@ -83,12 +86,20 @@ public class Flight {
         this.date = date;
     }
 
-    public Time getTime() {
-        return time;
+    public Time getDepartureTime() {
+        return departureTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setDepartureTime(Time departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     public Double getPrice() {

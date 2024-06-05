@@ -7,17 +7,20 @@ public class FlightDTO {
     private Long departureAirportId;
     private Long arrivalAirportId;
     private Date date;
-    private Time time;
+    private Time departureTime;
+    private Time arrivalTime;
+
 
     public FlightDTO() {
     }
 
-    public FlightDTO(Long airplaneId, Long departureAirportId, Long arrivalAirportId, Date date, Time time) {
+    public FlightDTO(Long airplaneId, Long departureAirportId, Long arrivalAirportId, Date date, Time departureTime, Time arrivalTime) {
         this.airplaneId = airplaneId;
         this.departureAirportId = departureAirportId;
         this.arrivalAirportId = arrivalAirportId;
         this.date = date;
-        this.time = time;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
     }
 
     public Long getAirplaneId() {
@@ -52,11 +55,19 @@ public class FlightDTO {
         this.date = date;
     }
 
-    public Time getTime() {
-        return time;
+    public Time getDepartureTime() {
+        return departureTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setDepartureTime(Time departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 }

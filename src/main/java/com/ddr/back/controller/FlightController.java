@@ -78,7 +78,8 @@ public class FlightController {
             flight.setDepartureAirport(departureAirportOpt.get());
             flight.setArrivalAirport(arrivalAirportOpt.get());
             flight.setDate(dto.getDate());
-            flight.setTime(dto.getTime());
+            flight.setDepartureTime(dto.getDepartureTime());
+            flight.setArrivalTime(dto.getArrivalTime());
             flight.setPrice(generateFlightPrice(flight));
 
             flightRepository.save(flight);
@@ -112,7 +113,8 @@ public class FlightController {
             existingEntity.setDepartureAirport(departureAirportOpt.get());
             existingEntity.setArrivalAirport(arrivalAirportOpt.get());
             existingEntity.setDate(dto.getDate());
-            existingEntity.setTime(dto.getTime());
+            existingEntity.setDepartureTime(dto.getDepartureTime());
+            existingEntity.setArrivalTime(dto.getArrivalTime());
 
             flightRepository.save(existingEntity);
             return ResponseEntity.status(HttpStatus.OK).body("Updated successfully");
