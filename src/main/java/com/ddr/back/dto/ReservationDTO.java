@@ -9,9 +9,9 @@ public class ReservationDTO {
     @Nonnull
     private Long userId;
     @Nonnull
-    private Integer luggage;
+    private String luggage;
 
-    public ReservationDTO(@Nonnull Long flightId, @Nonnull Long userId, @Nonnull Integer luggage) {
+    public ReservationDTO(@Nonnull Long flightId, @Nonnull Long userId, @Nonnull String luggage) {
         this.flightId = flightId;
         this.userId = userId;
         this.luggage = luggage;
@@ -36,11 +36,11 @@ public class ReservationDTO {
     }
 
     @Nonnull
-    public Integer getLuggage() {
+    public String getLuggage() {
         return luggage;
     }
 
-    public void setLuggage(@Nonnull Integer luggage) {
+    public void setLuggage(@Nonnull String luggage) {
         this.luggage = luggage;
     }
 }

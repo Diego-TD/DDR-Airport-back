@@ -23,7 +23,7 @@ public class Reservation {
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
-    private Integer luggage;
+    private String luggage;
     //@Column(nullable = false)
     private Double total;
 
@@ -31,7 +31,7 @@ public class Reservation {
 
     }
 
-    public Reservation(Long id, Flight flight, User user, LocalDateTime createdAt, Integer luggage, Double total) {
+    public Reservation(Long id, Flight flight, User user, LocalDateTime createdAt, String luggage, Double total) {
         this.id = id;
         this.flight = flight;
         this.user = user;
@@ -72,11 +72,11 @@ public class Reservation {
         this.createdAt = createdAt;
     }
 
-    public Integer getLuggage() {
+    public String getLuggage() {
         return luggage;
     }
 
-    public void setLuggage(Integer luggage) {
+    public void setLuggage(String luggage) {
         this.luggage = luggage;
     }
 

@@ -61,7 +61,7 @@ public class FlightController {
         }
     }
 
-    @PostMapping("/flight")
+    @PostMapping("/flight   ")
     public ResponseEntity<?> createFlight(@Nonnull @RequestBody FlightDTO dto) {
         try {
 
