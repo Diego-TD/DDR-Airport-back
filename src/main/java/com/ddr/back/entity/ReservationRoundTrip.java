@@ -9,7 +9,7 @@ public class ReservationRoundTrip extends Reservation{
     @JoinColumn(nullable = false)
     private Flight returnFlight;
 
-    public ReservationRoundTrip(Long id, Flight flight, Flight returnFlight, User user, LocalDateTime createdAt, Integer luggage, Double total) {
+    public ReservationRoundTrip(Long id, Flight flight, Flight returnFlight, User user, LocalDateTime createdAt, String luggage, Double total) {
         super(id, flight, user, createdAt, luggage, total);
         this.returnFlight = returnFlight;
     }

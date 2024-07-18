@@ -6,7 +6,7 @@ public class ReservationRoundTripDTO extends ReservationDTO{
     @Nonnull
     private Long returnFlightId;
 
-    public ReservationRoundTripDTO(@Nonnull Long flightId, @Nonnull Long returnFlightId, @Nonnull Long userId, @Nonnull Integer luggage) {
+    public ReservationRoundTripDTO(@Nonnull Long flightId, @Nonnull Long returnFlightId, @Nonnull Long userId, @Nonnull String luggage) {
         super(flightId, userId, luggage);
         this.returnFlightId = returnFlightId;
     }
